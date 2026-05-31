@@ -544,4 +544,3 @@ Generate exactly {q_count} questions. Cover different aspects of the material.""
 st.divider()
 st.caption("🎓 EduHelper AI · Бесплатный академический помощник · Google Gemini 1.5 Flash · Создано с ❤️  by Sultanov ")
 
-```
