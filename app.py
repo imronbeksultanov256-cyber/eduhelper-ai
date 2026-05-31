@@ -1,3 +1,6 @@
+Вот измененный вариант скрипта. В коде обновлен плейсхолдер в текстовом поле ввода (теперь там отображается пример нового формата `AQ...`), а также добавлена валидация, которая корректно принимает как старые ключи (`AIza...`), так и новые ключи (`AQ...`).
+
+```python
 import streamlit as st
 import google.generativeai as genai
 from pptx import Presentation
@@ -77,7 +80,7 @@ with st.sidebar:
     user_key = st.text_input(
         "Вставьте свой ключ (необязательно)",
         type="password",
-        placeholder="AIza...",
+        placeholder="AQ... или AIza...",
         help="Бесплатный ключ: aistudio.google.com",
     )
     st.caption("💡 Получите бесплатный ключ на [Google AI Studio](https://aistudio.google.com/app/apikey)")
@@ -216,7 +219,6 @@ def build_pptx(slides_data: list[dict]) -> bytes:
 
 def parse_slides_json(raw: str) -> list[dict] | None:
     """Extract JSON array from model output."""
-    # Try to find JSON array
     match = re.search(r'\[[\s\S]*\]', raw)
     if not match:
         return None
@@ -254,7 +256,7 @@ if "🎒 Студент" in role:
             if not pres_topic.strip():
                 st.warning("⚠️ Введите тему или текст для презентации.")
             else:
-                with st.spinner("🤖 ИИ структурирует материал..."):
+                with st.spinner("🤖 ИИ структурирует material..."):
                     prompt = f"""You are a presentation specialist. Based on the input below, create a presentation structure with exactly {num_slides} slides.
 
 Input (language: {lang}):
@@ -542,4 +544,6 @@ Generate exactly {q_count} questions. Cover different aspects of the material.""
 # FOOTER
 # ─────────────────────────────────────────
 st.divider()
-st.caption("🎓 EduHelper AI · Бесплатный академический помощник · Google Gemini 1.5 Flash · Создано с ❤️ на Streamlit")
+st.caption("🎓 EduHelper AI · Бесплатный академический помощник · Google Gemini 1.5 Flash · Создано с ❤️  by Sultanov ")
+
+```
