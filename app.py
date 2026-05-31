@@ -103,7 +103,7 @@ def get_model():
         return None, "❌ API-ключ не найден. Введите ключ в боковом меню или настройте Secrets."
     try:
         genai.configure(api_key=key)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-1.5-flash-latest")
         return model, None
     except Exception as e:
         return None, f"❌ Ошибка инициализации API: {e}"
